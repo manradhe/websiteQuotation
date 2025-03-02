@@ -42,7 +42,7 @@ function generateQuotation() {
             doc.text(`Total Cost: $${totalCost.toFixed(2)}`, 20, 130);
 
             // Save PDF
-            doc.save("Website_Quotation.pdf");
+            doc.save(clientName+".pdf");
         };
     };
 }
