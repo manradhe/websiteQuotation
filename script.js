@@ -2,11 +2,12 @@ function generateQuotation() {
     const { jsPDF } = window.jspdf;
     let doc = new jsPDF();
 
-    // Base64 Logo (Replace with your own logo)
-    let logoBase64 = "data:image/png;base64,iVBORw0KGgo..."; // Convert your logo to Base64
+  // Load images
+  let logo = new Image();
+  logo.src = "logo.png"; // Place your company logo in the project folder
 
     // Add Company Logo
-    doc.addImage(logoBase64, "PNG", 10, 10, 40, 20); 
+    doc.addImage(logo, "PNG", 10, 10, 40, 20); 
 
     // Add Company Name
     doc.setFont("helvetica", "bold");
