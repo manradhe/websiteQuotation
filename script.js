@@ -11,7 +11,7 @@ function generateQuotation() {
     // Add Company Name
     doc.setFont("helvetica", "bold");
     doc.setFontSize(20);
-    doc.text("Your Company Name", 60, 20);
+    doc.text("Shree Ram Developers", 60, 20);
 
     // Add Quotation Title
     doc.setFontSize(14);
