@@ -29,6 +29,7 @@ function validateForm() {
     if (isValid) {
         document.getElementById("downloadPdf").classList.remove("d-none");
         downloadPDF();
+        clearForm();
     }
 }
 
@@ -51,7 +52,7 @@ function downloadPDF() {
     let hostingCost = parseFloat(document.getElementById("hostingCost").value) || 0;
     let maintenanceCost = parseFloat(document.getElementById("maintenanceCost").value) || 0;
     let totalCost = designCost + devCost + hostingCost + maintenanceCost;
-
+    let companyAddress = "123, Business Street, Solapur, India";
     // Add Company Name
     doc.setFont("helvetica", "bold");
     doc.setFontSize(20);
@@ -83,7 +84,17 @@ function downloadPDF() {
         headStyles: { fillColor: [41, 128, 185], textColor: [255, 255, 255] },
         bodyStyles: { textColor: [0, 0, 0] }
     });
+    // Add Company Address at Bottom-Right
+    let pageHeight = doc.internal.pageSize.height; // Get page height
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "italic");
+    let textWidth = doc.getTextWidth(companyAddress); // Get text width
+    doc.text(companyAddress, doc.internal.pageSize.width - textWidth - 10, pageHeight - 15); // Align Right
 
     // Save PDF
-    doc.save(clientName + " "+mobileNumber + ".pdf");
+    doc.save(clientName + " " + mobileNumber + ".pdf");
+}
+function clearForm() {
+    document.getElementById("quotationForm").reset(); // Reset the form
+    document.getElementById("downloadPdf").classList.add("d-none"); // Hide Download PDF button again
 }
