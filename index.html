@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Quotation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Website Design & Development Quotation</h2>
+        <div class="card p-4">
+            <form id="quotationForm">
+                <div class="mb-3">
+                    <label class="form-label">Client Name:</label>
+                    <input type="text" id="clientName" class="form-control" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Project Description:</label>
+                    <textarea id="projectDesc" class="form-control" required></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label">Design Cost ($):</label>
+                        <input type="number" id="designCost" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Development Cost ($):</label>
+                        <input type="number" id="devCost" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Hosting Cost ($):</label>
+                        <input type="number" id="hostingCost" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Maintenance Cost ($):</label>
+                        <input type="number" id="maintenanceCost" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <button type="button" class="btn btn-success" onclick="generateQuotation()">Generate Quotation</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="quotationOutput" class="output mt-4"></div>
+
+        <div class="text-center mt-3">
+            <button id="downloadPdf" class="btn btn-primary d-none" onclick="downloadPDF()">Download PDF</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
