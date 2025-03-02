@@ -31,7 +31,7 @@ function generateQuotation() {
     // Client & Project Information
     doc.setFontSize(12);
     doc.text(`Client Name: ${clientName}`, 20, 50);
-    oc.text(`Contact Number: ${mobilenumber}`, 20, 60);
+    doc.text(`Contact Number: ${mobilenumber}`, 20, 60);
     doc.text(`Project Description: ${projectDesc}`, 20, 70);
 
     // Create Table with autoTable
