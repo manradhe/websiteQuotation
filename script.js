@@ -1,4 +1,4 @@
-function downloadPDF() {
+function generateQuotation() {
     const { jsPDF } = window.jspdf;
     let doc = new jsPDF();
 
