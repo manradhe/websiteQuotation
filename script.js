@@ -2,12 +2,17 @@ function generateQuotation() {
     const { jsPDF } = window.jspdf;
     let doc = new jsPDF();
 
-  // Load images
-  let logo = new Image();
-  logo.src = "logo.png"; // Place your company logo in the project folder
+    // Ensure autoTable is available
+    if (!doc.autoTable) {
+        console.error("autoTable plugin is missing!");
+        return;
+    }
+
+    // Base64 Logo (Replace with your actual Base64 logo)
+    let logoBase64 = "data:image/png;base64,iVBORw0KGgo...";
 
     // Add Company Logo
-    doc.addImage(logo, "PNG", 10, 10, 40, 20); 
+    doc.addImage(logoBase64, "PNG", 10, 10, 40, 20);
 
     // Add Company Name
     doc.setFont("helvetica", "bold");
@@ -31,12 +36,12 @@ function generateQuotation() {
     // Client & Project Information
     doc.setFontSize(12);
     doc.text(`Client Name: ${clientName}`, 20, 50);
-    doc.text(`Contact Number: ${mobilenumber}`, 20, 60);
-    doc.text(`Project Description: ${projectDesc}`, 20, 70);
+    doc.text(`Contact: ${mobilenumber}`, 20, 50);
+    doc.text(`Project Description: ${projectDesc}`, 20, 60);
 
     // Create Table with autoTable
     doc.autoTable({
-        startY: 80,
+        startY: 70,
         head: [['Description', 'Cost (USD)']], // Table Headers
         body: [
             ['Design Cost', `$${designCost.toFixed(2)}`],
@@ -52,5 +57,5 @@ function generateQuotation() {
     });
 
     // Save PDF
-    doc.save(clientName+ " " + mobilenumber +".pdf");
+    doc.save(clientName +" "+ mobilenumber +".pdf");
 }
